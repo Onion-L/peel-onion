@@ -3,13 +3,11 @@ import showTitle from '@/util/showTitle.ts';
 import cli from '@/cli/index.ts';
 // import getPkgManager from '@/util/getPkgManager.ts';
 
-function main() {
-  const result = cli();
-
-  console.log(result);
-
-  // const pkgManager = getPkgManager();
+async function main() {
   showTitle();
+  const { appName, language, style, framework, hasBackend } = await cli();
+  console.log(appName, language, style, framework, hasBackend);
+  // const pkgManager = getPkgManager();
 }
 
 main();
