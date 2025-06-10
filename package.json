@@ -1,13 +1,21 @@
 {
-  "name": "peel-onion",
+  "name": "create-onion-app",
   "version": "0.0.0",
   "description": "",
   "main": "index.js",
   "type": "module",
   "exports": "./dist/index.js",
   "bin": {
-    "peel-onion": "./dist/index.js"
+    "create-onion-app": "./dist/index.js"
   },
+  "files": [
+    "dist",
+    "tsconfig.json",
+    "package.json",
+    "README.md",
+    "LICENSE",
+    "template"
+  ],
   "engines": {
     "node": ">=18.17.0"
   },

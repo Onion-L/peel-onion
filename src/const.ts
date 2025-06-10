@@ -9,7 +9,7 @@ _____    ______   ______   _           ____    _   _   _____    ____    _   _
 
 `;
 
-export const PEEL_ONION_NAME = 'peel-onion';
+export const PEEL_ONION_NAME = 'create-onion-app';
 
 export const INTRO_MESSAGE = "Let's peel an onion";
 export const DEFAULT_APP_NAME = 'onion-project';
