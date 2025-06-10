@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="./public/peel-onion1.png" alt="Peel Onion Logo" width="200" />
+  <img src="./public/peel-onion.png" alt="Peel Onion Logo" width="200" />
   <h1>Let's peel an onion and make your own onion app.</h1>
 </div>
 <div align="center">
