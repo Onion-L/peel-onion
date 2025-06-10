@@ -69,6 +69,12 @@ export default async function cli() {
             initialValue: TS,
           });
         },
+        _: async ({ results }) => {
+          if (results.language === 'javascript') {
+            prompts.cancel("Sorry we don't support JavaScript yet");
+            process.exit(1);
+          }
+        },
         style: () => {
           return prompts.select({
             message: 'Will you be using UnoCSS or TailwindCSS?',
