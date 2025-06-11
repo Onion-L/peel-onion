@@ -7,7 +7,6 @@ import { generateProject } from '@/util/generator.ts';
 async function main() {
   showTitle();
   const { appName, language, style, framework, hasBackend } = await cli();
-
   await generateProject(appName, language, style, framework, hasBackend);
   // const pkgManager = getPkgManager();
 }

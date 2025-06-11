@@ -5,9 +5,6 @@ import chalk from 'chalk';
 import { REACT } from '@/const.ts';
 import copyTemplate from './copyTemplate.ts';
 import * as prompts from '@clack/prompts';
-// import { fileURLToPath } from 'url';
-// import { copyTemplate } from './copyTemplate.ts';
-// import { installDependencies } from './installDependencies.ts';
 
 export async function generateProject(
   appName: string,
@@ -37,16 +34,6 @@ export async function generateProject(
       framework,
       hasBackend,
     });
-
-    const git = await prompts.confirm({
-      message: 'Do you want to initialize a Git repository?',
-      initialValue: false,
-    });
-
-    if (git) {
-      console.log(chalk.blue('Initializing Git repository...'));
-      execSync('git init', { cwd: projectDir, stdio: 'ignore' });
-    }
 
     const wantInstall = await prompts.confirm({
       message: 'Do you want to install all dependencies?',
