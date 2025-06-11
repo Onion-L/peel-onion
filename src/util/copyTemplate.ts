@@ -11,21 +11,17 @@ export default async function copyTemplate(
     hasBackend,
   }: { language: string; style: string; framework: string; hasBackend: boolean }
 ) {
-  console.log(projectDir);
-
+  // TODO language and style
   const filename = fileURLToPath(import.meta.url);
   const dirname = path.dirname(filename);
 
   const templateDir = path.join(dirname, '..', 'src', 'template');
   const frameworkDir = path.join(templateDir, framework, 'base');
 
-  console.log('call', templateDir);
-
   fs.copySync(frameworkDir, projectDir);
   if (hasBackend) {
-    const backendDir = path.join(projectDir, 'src', 'server');
+    const backendDir = path.join(projectDir, 'server');
     fs.mkdirSync(backendDir, { recursive: true });
     fs.copySync(path.join(templateDir, 'server'), backendDir);
-    // fs.copySync(backendDir, path.join(projectDir, 'backend'));
   }
 }

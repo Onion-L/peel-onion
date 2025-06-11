@@ -38,7 +38,6 @@ export async function generateProject(
       hasBackend,
     });
 
-    console.log(language, style, framework, hasBackend);
     const git = await prompts.confirm({
       message: 'Do you want to initialize a Git repository?',
       initialValue: false,
@@ -49,16 +48,27 @@ export async function generateProject(
       execSync('git init', { cwd: projectDir, stdio: 'ignore' });
     }
 
-    // await installDependencies(projectDir, {
-    //   language,
-    //   style,
-    //   framework,
-    //   hasBackend,
-    // });
+    const wantInstall = await prompts.confirm({
+      message: 'Do you want to install all dependencies?',
+      initialValue: false,
+    });
+
+    if (wantInstall) {
+      const pkgInstall = await prompts.select({
+        message: 'Select package manager',
+        options: [
+          { value: 'npm', label: 'npm' },
+          { value: 'yarn', label: 'yarn' },
+          { value: 'pnpm', label: 'pnpm' },
+          { value: 'bun', label: 'bun' },
+        ],
+        initialValue: 'npm',
+      });
+      console.log(chalk.blue('Installing dependencies...'));
+      execSync(`${String(pkgInstall)} install`, { cwd: projectDir, stdio: 'ignore' });
+    }
 
     console.log(chalk.green('\n✅ Project created successfully!\n'));
-    console.log(`  cd ${appName}`);
-    console.log('  npm run dev\n');
   } catch (error) {
     console.error(chalk.red('Project creation failed:'), error);
     fs.rmSync(projectDir, { recursive: true });
